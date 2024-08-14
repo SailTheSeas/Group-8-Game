@@ -10,7 +10,8 @@ public class PlantBehaviours : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float startupTime;
     [SerializeField] private PlantType plantType;
-    [SerializeField] private bool canAttack;
+    [SerializeField] private GameObject plantProjectile;
+    private bool canAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,12 +53,13 @@ public class PlantBehaviours : MonoBehaviour
 
     private void ProduceSun()
     {
+        Instantiate(plantProjectile, this.transform);
         Debug.Log("Made Sun");
     }
 
     private void ShootNormalPea()
     {
-
+        Instantiate(plantProjectile, this.transform);
         Debug.Log("Fired");
     }
 
@@ -83,6 +85,7 @@ public class PlantBehaviours : MonoBehaviour
     {
         CancelInvoke("ChompCooldown");
         Debug.Log("Chomp Ready");
+        canAttack = true;
     }
 
     private void Arm()
