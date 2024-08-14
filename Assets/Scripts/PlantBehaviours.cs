@@ -11,23 +11,33 @@ public class PlantBehaviours : MonoBehaviour
     [SerializeField] private float startupTime;
     [SerializeField] private PlantType plantType;
     [SerializeField] private GameObject plantProjectile;
-    private bool canAttack;
+    [SerializeField] private LayerMask zombieLayer;
+    [SerializeField] private Vector2 mapEdge;
+    
+    private bool canAttack, isDead;
+    private RaycastHit2D hit;
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         switch (plantType)
         {
             case PlantType.sunfower:
                 InvokeRepeating("ProduceSun", workRate, workRate);
                 break;
             case PlantType.peashooter:
-                InvokeRepeating("ShootNormalPea", workRate, workRate);
+                canAttack = false;
+                StartCoroutine(ShootDelay());
+                //InvokeRepeating("ShootNormalPea", workRate, workRate);
                 break;
             case PlantType.wallnut:
+                
                 //Nothing
                 break;
             case PlantType.cabbagepult:
-                InvokeRepeating("FlingCabage", workRate, workRate);
+                canAttack = false;
+                StartCoroutine(ShootDelay());
+                // InvokeRepeating("FlingCabage", workRate, workRate);
                 break;
             case PlantType.potatomine:
                 canAttack = false;
@@ -38,7 +48,9 @@ public class PlantBehaviours : MonoBehaviour
                 //Nothing
                 break;
             case PlantType.snowpea:
-                InvokeRepeating("ShootIcePea", workRate, workRate);
+                canAttack = false;
+                StartCoroutine(ShootDelay());
+                //InvokeRepeating("ShootIcePea", workRate, workRate);
                 break;
             default:
                 break;
@@ -46,36 +58,85 @@ public class PlantBehaviours : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+
+        hit = Physics2D.Raycast(transform.position, mapEdge,mapEdge.x - transform.position.x, zombieLayer);
+
+        if (hit.collider != null)
+        {
+            if (canAttack)
+            {
+                switch (plantType)
+                {
+                    case PlantType.peashooter:
+                        ShootPea();
+                        break;
+                    case PlantType.cabbagepult:                        
+                        FlingCabage(hit.transform);
+                        break;
+                    case PlantType.snowpea:
+                        ShootPea();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    public void Damage(float damage)
+    {
+        plantHealth -= damage;
+        if (plantHealth <= 0)
+        {
+           Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            Destroy(this.gameObject);
+        }
     }
 
     private void ProduceSun()
     {
-        Instantiate(plantProjectile, this.transform);
-        Debug.Log("Made Sun");
+        Instantiate(plantProjectile);
+        //Debug.Log("Made Sun");
     }
 
-    private void ShootNormalPea()
+    private void ShootPea()
     {
-        Instantiate(plantProjectile, this.transform);
-        Debug.Log("Fired");
+        Instantiate(plantProjectile);
+        canAttack = false;
+        //Debug.Log("Fired");
+        StartCoroutine(ShootDelay());
     }
 
-    private void ShootIcePea()
+    IEnumerator ShootDelay()
     {
-        Debug.Log("Fired, Slowed");
+        yield return new WaitForSeconds(workRate);
+        canAttack = true;
     }
 
-    private void FlingCabage()
+    private void FlingCabage(Transform target)
     {
-        Debug.Log("Thrown");
+        GameObject cabbage = Instantiate(plantProjectile);
+        cabbage.GetComponent<Projectile>().SetTargetTransform(target);
+        cabbage.GetComponent<Projectile>().SetStartTransform(this.transform);
+        canAttack = false;
+        //Debug.Log("Thrown");
+        StartCoroutine(ShootDelay());
+ 
     }
 
     private void Chomp(ZombieBehaviours other)
     {
-        Debug.Log("Eaten");
+        //Debug.Log("Eaten");
         other.Die();
         canAttack = false;
         InvokeRepeating("ChompCooldown", startupTime, startupTime);
@@ -84,25 +145,42 @@ public class PlantBehaviours : MonoBehaviour
     private void ChompCooldown()
     {
         CancelInvoke("ChompCooldown");
-        Debug.Log("Chomp Ready");
+        //Debug.Log("Chomp Ready");
         canAttack = true;
     }
 
     private void Arm()
     {
-        Debug.Log("Armed");
+        //Debug.Log("Armed");
         canAttack = true;
         CancelInvoke("Arm");
     }
 
     private void Boom(ZombieBehaviours other)
     {
-        Debug.Log("Boom");
+        //Debug.Log("Boom");
         other.Die();
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    public void Trigger(ZombieBehaviours zombie)
+    {
+        switch (plantType)
+        {
+            case PlantType.potatomine:
+                if (canAttack)
+                    Boom(zombie);
+                break;
+            case PlantType.chomper:
+                if (canAttack)
+                    Chomp(zombie);
+                break;
+            default:
+                break;
+        }
+    }
+
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         if (other.transform.TryGetComponent<ZombieBehaviours>(out ZombieBehaviours zombie))
         {
@@ -130,7 +208,7 @@ public class PlantBehaviours : MonoBehaviour
                     break;
             }
         }
-    }
+    }*/
 
 
 }
