@@ -8,6 +8,7 @@ public class ZombieBehaviours : MonoBehaviour
     [SerializeField] private float zombieHealth;
     [SerializeField] private float zombieSpeed;
     [SerializeField] private float zombieDamage;
+    [SerializeField] private ZombieType zombieType;
 
     private float currentSpeed;
     bool isDead, canMove;

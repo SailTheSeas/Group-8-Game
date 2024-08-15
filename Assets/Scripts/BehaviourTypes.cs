@@ -20,3 +20,13 @@ public enum ProjectileType
     icepea,
     cabbage,
 }
+
+public enum ZombieType
+{
+    Basic,
+    Cone,
+    Bucket,
+    Door,
+    Pole,
+    Rugby,
+}
