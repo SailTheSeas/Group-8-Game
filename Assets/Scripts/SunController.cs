@@ -14,7 +14,11 @@ public class SunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Plant Spawned");
+            SpendSun(40);
+        }*/
     }
 
     public void PickupSun()
@@ -24,6 +28,9 @@ public class SunController : MonoBehaviour
 
     public void SpendSun(int SunCost)
     {
-        SunAmount = SunAmount - SunCost;
+        if (SunAmount > SunCost)
+        {
+            SunAmount = SunAmount - SunCost;
+        }
     }
 }
