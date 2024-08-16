@@ -7,11 +7,20 @@ public class PlantPlacer : MonoBehaviour
     private bool isPlacing = false;
 
     private GridManager gridManager;
-
+    private SunController sunController;
     public int cost; 
     void Start()
     {
-        gridManager = FindObjectOfType<GridManager>();
+        gridManager = this.GetComponent<GridManager>();
+        sunController = this.GetComponent<SunController>();
+    }
+
+    public void SetPlantPrefab(GameObject newPlantPrefab)
+    {
+        plantPrefab = newPlantPrefab;
+        //placePlant = newPlantPrefab;
+        placePlant = Instantiate(plantPrefab);
+        isPlacing = true;
     }
 
     void Update()
@@ -23,6 +32,7 @@ public class PlantPlacer : MonoBehaviour
             mousePosition.z = 0f; 
 
             Vector3 snappedPosition = gridManager.SnapToGrid(mousePosition);
+            
             placePlant.transform.position = snappedPosition;
 
             Vector2Int gridPosition = gridManager.WorldToGrid(snappedPosition);
@@ -31,10 +41,12 @@ public class PlantPlacer : MonoBehaviour
             {
                 if (!gridManager.IsCellOccupied(gridPosition))
                 {
+                    Debug.Log("Placed");
                     gridManager.SetCellOccupied(gridPosition, true);
-                    placePlant = null;
+                    //placePlant = null;
+                    placePlant.GetComponent<PlantBehaviours>().SetRow(gridPosition.y);
                     isPlacing = false;
-                    gridManager.sun = gridManager.sun - cost; ; 
+                    sunController.SpendSun(cost);
 
                 }
                 else
@@ -54,13 +66,13 @@ public class PlantPlacer : MonoBehaviour
 
         }
     }
-    public void PlacePlantButtonClicked()
+    /*public void PlacePlantButtonClicked()
     {
         if (!isPlacing && cost <= gridManager.sun)
         {
             placePlant = Instantiate(plantPrefab);
             isPlacing = true;
         }
-    }
+    }*/
 }
     

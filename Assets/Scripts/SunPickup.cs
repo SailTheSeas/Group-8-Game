@@ -9,7 +9,7 @@ public class SunPickup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sunController = GameObject.Find("Canvas").GetComponent<SunController>();
+        sunController = FindObjectOfType<SunController>();
         FinalPosition = new Vector2(gameObject.transform.position.x, Random.Range(-3.25f, 2.5f));
     }
 

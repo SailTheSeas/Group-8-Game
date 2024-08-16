@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float journeyTime;
 
+    SunController sunController;
     private int row;
     private Transform zombie, projectile, start;
     private Rigidbody2D RB;
@@ -19,6 +20,7 @@ public class Projectile : MonoBehaviour
         switch (type)
         {
             case ProjectileType.sun:
+                sunController = FindObjectOfType<SunController>();
                 break;
             case ProjectileType.pea:
                 RB = GetComponent<Rigidbody2D>();
@@ -114,6 +116,7 @@ public class Projectile : MonoBehaviour
     {
         if (type == ProjectileType.sun)
         {
+            sunController.PickupSun();
             Destroy(this.gameObject);
         }
     }
