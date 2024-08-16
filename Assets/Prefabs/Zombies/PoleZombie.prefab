@@ -106,8 +106,9 @@ MonoBehaviour:
   zombieDamage: 4.2
   zombieType: 4
   accessoryHealth: 0
-  jumpSpeed: 1
+  jumpSpeed: 2.5
   accessory: {fileID: 0}
+  row: 0
 --- !u!61 &2007041095999591036
 BoxCollider2D:
   m_ObjectHideFlags: 0

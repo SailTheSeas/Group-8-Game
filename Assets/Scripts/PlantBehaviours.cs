@@ -189,8 +189,11 @@ public class PlantBehaviours : MonoBehaviour
     private void Boom(ZombieBehaviours other)
     {
         //Debug.Log("Boom");
-        other.Die();
-        Destroy(this.gameObject);
+        if (other.GetZombieType() != ZombieType.Pole)
+        {
+            other.Die();
+            Destroy(this.gameObject);
+        }
     }
 
     public void Trigger(ZombieBehaviours zombie)

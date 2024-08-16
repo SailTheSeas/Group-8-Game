@@ -47,6 +47,7 @@ public class ZombieBehaviours : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (canMove && !isJumping)
             transform.position = new Vector3(transform.position.x - currentSpeed, transform.position.y, transform.position.z);
         else if (isJumping)
@@ -54,14 +55,20 @@ public class ZombieBehaviours : MonoBehaviour
             float distanceCovered = (Time.time - jumpStartTime) * jumpSpeed;
             float fractionOfJump = distanceCovered / jumpLength;
             transform.position = Vector3.Lerp(jumpStart, jumpEnd, fractionOfJump);
-            if (fractionOfJump >= 0)
+            if (fractionOfJump >= 1)
             {
                 isJumping = false;
+                canMove = true;
                 zombieType = ZombieType.Basic;
                 zombieSpeed = 0.003f;
                 currentSpeed = zombieSpeed;
             }
         }
+    }
+
+    public ZombieType GetZombieType()
+    {
+        return zombieType;
     }
 
     public void Damage(float damage)
@@ -87,7 +94,7 @@ public class ZombieBehaviours : MonoBehaviour
     {
         if (!isDead)
         {
-            Debug.Log(zombieName + " Died");
+            /*Debug.Log(zombieName + " Died");*/
             isDead = true;
             Destroy(this.gameObject);
         }
@@ -148,8 +155,8 @@ public class ZombieBehaviours : MonoBehaviour
             if (other.transform.TryGetComponent<PlantBehaviours>(out PlantBehaviours plant))
             {
                 jumpStart = this.transform.position;
-                jumpEnd = plant.transform.position - new Vector3(1.2f, 0, 0);
-                Debug.Log(jumpEnd);
+          
+                jumpEnd = plant.transform.position - new Vector3(1.2f, 0, 0);                
                 isJumping = true;
                 jumpStartTime = Time.time;
                 jumpLength = Vector3.Distance(jumpStart,jumpEnd);
@@ -162,13 +169,14 @@ public class ZombieBehaviours : MonoBehaviour
     {
         if (other.transform.TryGetComponent<PlantBehaviours>(out PlantBehaviours plant))
         {
+            plant.Trigger(this);
             if (plant.GetRow() == row)
             {
                 if (zombieType != ZombieType.Pole)
                 {
                     plant.Damage(zombieDamage);
                     canMove = false;
-                    plant.Trigger(this);
+                    
                     this.plant = other;
                 }
             }
