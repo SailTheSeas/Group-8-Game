@@ -9,29 +9,77 @@ public class ZombieBehaviours : MonoBehaviour
     [SerializeField] private float zombieSpeed;
     [SerializeField] private float zombieDamage;
     [SerializeField] private ZombieType zombieType;
+    [SerializeField] private float accessoryHealth;
+    [SerializeField] private float jumpSpeed;
 
+    [SerializeField] private GameObject accessory;
+
+    [SerializeField] private int row;
     private float currentSpeed;
     bool isDead, canMove;
+    bool isJumping;
+
+    private Collider2D plant;
+
+    private Vector3 jumpStart, jumpEnd;
+    private float jumpStartTime, jumpLength;
     // Start is called before the first frame update
     void Start()
     {
         isDead = false;
         canMove = true;
+        isJumping = false;
         currentSpeed = zombieSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (zombieType != ZombieType.Pole)
+        {
+            if (!plant)
+                canMove = true;
+        } else
+        {
+
+        }
     }
 
-    public void Damage(float Damage)
+    private void FixedUpdate()
     {
-        zombieHealth -= Damage;
+        if (canMove && !isJumping)
+            transform.position = new Vector3(transform.position.x - currentSpeed, transform.position.y, transform.position.z);
+        else if (isJumping)
+        {
+            float distanceCovered = (Time.time - jumpStartTime) * jumpSpeed;
+            float fractionOfJump = distanceCovered / jumpLength;
+            transform.position = Vector3.Lerp(jumpStart, jumpEnd, fractionOfJump);
+            if (fractionOfJump >= 0)
+            {
+                isJumping = false;
+                zombieType = ZombieType.Basic;
+                zombieSpeed = 0.003f;
+                currentSpeed = zombieSpeed;
+            }
+        }
+    }
+
+    public void Damage(float damage)
+    {
+        zombieHealth -= damage;
         if (zombieHealth <= 0)
         {
             Die();           
+        }
+    }
+
+    public void DamageAccessory(float damage)
+    {
+        accessoryHealth -= damage;
+        if (zombieHealth <= 0)
+        {
+            zombieType = ZombieType.Basic;
+            accessory.SetActive(false);
         }
     }
 
@@ -45,10 +93,9 @@ public class ZombieBehaviours : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    public void SetRow(int newRow)
     {
-        if (canMove)
-            transform.position = new Vector3(transform.position.x - currentSpeed, transform.position.y, transform.position.z);
+        row = newRow;
     }
 
     IEnumerator SlowDuration()
@@ -61,15 +108,53 @@ public class ZombieBehaviours : MonoBehaviour
     {        
         if (other.transform.TryGetComponent<Projectile>(out Projectile projectile))
         {
-            Damage(projectile.GetDamage());
-            if (projectile.IsIce())
+            if (projectile.GetRow() == row)
             {
-                currentSpeed = zombieSpeed / 2;
-                StartCoroutine(SlowDuration());
+                switch (zombieType)
+                {
+                    case ZombieType.Basic:
+                        Damage(projectile.GetDamage());
+                        break;
+                    case ZombieType.Cone:
+                        DamageAccessory(projectile.GetDamage());
+                        break;
+                    case ZombieType.Bucket:
+                        DamageAccessory(projectile.GetDamage());
+                        break;
+                    case ZombieType.Door:
+                        DamageAccessory(projectile.GetDamage());
+                        break;
+                    case ZombieType.Pole:
+                        Damage(projectile.GetDamage());
+                        break;
+                    case ZombieType.Rugby:
+                        DamageAccessory(projectile.GetDamage());
+                        break;
+                    default:
+                        break;
+                }
+
+
+                if (projectile.IsIce())
+                {
+                    currentSpeed = zombieSpeed / 2;
+                    StartCoroutine(SlowDuration());
+                }
+                projectile.DestroyProjectile();
             }
-            projectile.DestroyProjectile();
         }
-        
+        if (zombieType == ZombieType.Pole)
+        {
+            if (other.transform.TryGetComponent<PlantBehaviours>(out PlantBehaviours plant))
+            {
+                jumpStart = this.transform.position;
+                jumpEnd = plant.transform.position - new Vector3(1.2f, 0, 0);
+                Debug.Log(jumpEnd);
+                isJumping = true;
+                jumpStartTime = Time.time;
+                jumpLength = Vector3.Distance(jumpStart,jumpEnd);
+            }
+        }
 
     }
 
@@ -77,14 +162,18 @@ public class ZombieBehaviours : MonoBehaviour
     {
         if (other.transform.TryGetComponent<PlantBehaviours>(out PlantBehaviours plant))
         {
-            plant.Damage(zombieDamage);
-            canMove = false;
-            plant.Trigger(this);
+            if (plant.GetRow() == row)
+            {
+                if (zombieType != ZombieType.Pole)
+                {
+                    plant.Damage(zombieDamage);
+                    canMove = false;
+                    plant.Trigger(this);
+                    this.plant = other;
+                }
+            }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        canMove = true;        
-    }
+    
 }

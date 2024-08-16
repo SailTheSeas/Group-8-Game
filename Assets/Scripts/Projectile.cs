@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float projectileDamage;
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float journeyTime;
+
+    private int row;
     private Transform zombie, projectile, start;
     private Rigidbody2D RB;
     private float startTime;
@@ -63,6 +65,15 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    public void SetRow(int newRow)
+    {
+        row = newRow;
+    }
+
+    public int GetRow()
+    {
+        return row;
+    }
     public void SetTargetTransform(Transform newZombie)
     {
         zombie = newZombie;
@@ -71,6 +82,11 @@ public class Projectile : MonoBehaviour
     public void SetStartTransform(Transform newStart)
     {
         start = newStart;
+    }
+
+    public void SetDamage(float newProjectileDamage)
+    {
+        projectileDamage = newProjectileDamage;
     }
 
     public float GetDamage()

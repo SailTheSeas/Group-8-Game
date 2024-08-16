@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7925289058416821233}
   - component: {fileID: 7617541198923368807}
   - component: {fileID: 7533311548689515035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snowpea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.9056604, b: 0.8069378, a: 1}
   m_FlipX: 0

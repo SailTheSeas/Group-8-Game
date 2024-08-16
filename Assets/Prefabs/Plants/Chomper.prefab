@@ -99,17 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7e50e93823284d9f26a0ae9c3ad23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantHealth: 1000
-  coolDown: 5
-  workRate: 2
+  plantHealth: 300
+  coolDown: 7.5
+  workRate: 0
   damage: 5
-  startupTime: 25
+  startupTime: 42
+  sunCost: 150
   plantType: 5
   plantProjectile: {fileID: 0}
   zombieLayer:
     serializedVersion: 2
     m_Bits: 128
   mapEdge: {x: 8, y: 0}
+  row: 0
 --- !u!61 &4358945489709236314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &5279287727780720528
 Rigidbody2D:

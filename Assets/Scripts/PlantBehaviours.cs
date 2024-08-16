@@ -9,11 +9,14 @@ public class PlantBehaviours : MonoBehaviour
     [SerializeField] private float workRate;
     [SerializeField] private float damage;
     [SerializeField] private float startupTime;
+    [SerializeField] private float sunCost;
     [SerializeField] private PlantType plantType;
     [SerializeField] private GameObject plantProjectile;
     [SerializeField] private LayerMask zombieLayer;
     [SerializeField] private Vector2 mapEdge;
-    
+
+    [SerializeField] private int row;
+
     private bool canAttack, isDead;
     private RaycastHit2D hit;
     // Start is called before the first frame update
@@ -85,6 +88,27 @@ public class PlantBehaviours : MonoBehaviour
         }
     }
 
+    //Setters
+    public void SetRow(int newRow)
+    {
+        row = newRow;
+    }
+    //Getters
+    public float GetCooldown()
+    {
+        return coolDown;
+    }
+
+    public float GetSunCost()
+    {
+        return sunCost;
+    }
+
+    public int GetRow()
+    {
+        return row;
+    }
+
     public void Damage(float damage)
     {
         plantHealth -= damage;
@@ -105,13 +129,16 @@ public class PlantBehaviours : MonoBehaviour
 
     private void ProduceSun()
     {
-        Instantiate(plantProjectile);
+        Instantiate(plantProjectile, this.transform.position, Quaternion.identity);
         //Debug.Log("Made Sun");
     }
 
     private void ShootPea()
     {
-        Instantiate(plantProjectile);
+        GameObject pea =  Instantiate(plantProjectile, this.transform.position, Quaternion.identity);
+
+        pea.GetComponent<Projectile>().SetDamage(damage);
+        pea.GetComponent<Projectile>().SetRow(row);
         canAttack = false;
         //Debug.Log("Fired");
         StartCoroutine(ShootDelay());
@@ -128,6 +155,8 @@ public class PlantBehaviours : MonoBehaviour
         GameObject cabbage = Instantiate(plantProjectile);
         cabbage.GetComponent<Projectile>().SetTargetTransform(target);
         cabbage.GetComponent<Projectile>().SetStartTransform(this.transform);
+        cabbage.GetComponent<Projectile>().SetDamage(damage);
+        cabbage.GetComponent<Projectile>().SetRow(row);
         canAttack = false;
         //Debug.Log("Thrown");
         StartCoroutine(ShootDelay());
@@ -153,6 +182,7 @@ public class PlantBehaviours : MonoBehaviour
     {
         //Debug.Log("Armed");
         canAttack = true;
+        plantHealth = 9999999;
         CancelInvoke("Arm");
     }
 

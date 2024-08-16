@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7e50e93823284d9f26a0ae9c3ad23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantHealth: 1000
-  coolDown: 5
-  workRate: 2
-  damage: 5
+  plantHealth: 300
+  coolDown: 7.5
+  workRate: 2.925
+  damage: 40
   startupTime: 0
+  sunCost: 100
   plantType: 3
   plantProjectile: {fileID: 5215712899452570669, guid: 05eb154f4d477d34ea15484eea5946f0, type: 3}
   zombieLayer:
