@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlantPlacer : MonoBehaviour
@@ -10,6 +8,7 @@ public class PlantPlacer : MonoBehaviour
 
     private GridManager gridManager;
 
+    public int cost; 
     void Start()
     {
         gridManager = FindObjectOfType<GridManager>();
@@ -35,6 +34,8 @@ public class PlantPlacer : MonoBehaviour
                     gridManager.SetCellOccupied(gridPosition, true);
                     placePlant = null;
                     isPlacing = false;
+                    gridManager.sun = gridManager.sun - cost; ; 
+
                 }
                 else
                 {
@@ -53,9 +54,9 @@ public class PlantPlacer : MonoBehaviour
 
         }
     }
-    public void OnPlaceObjectButtonClicked()
+    public void PlacePlantButtonClicked()
     {
-        if (!isPlacing)
+        if (!isPlacing && cost <= gridManager.sun)
         {
             placePlant = Instantiate(plantPrefab);
             isPlacing = true;

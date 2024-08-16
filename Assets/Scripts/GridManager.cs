@@ -5,7 +5,9 @@ public class GridManager : MonoBehaviour
 {
     public Vector2 gridSize = new Vector2(9, 5);  
     public float cellSize = 1.0f;  
-    public Vector2 gridOrigin = new Vector2(-4f, -2f); 
+    public Vector2 gridOrigin = new Vector2(-4f, -2f);
+
+    public int sun = 10;
 
     private HashSet<Vector2Int> occupiedCells = new HashSet<Vector2Int>();
 

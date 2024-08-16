@@ -734,6 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 9002490137306654709, guid: 56b8717a72dd2fd47ab89c735bb19c12, type: 3}
+  sun: 10
+  cost: 5
 --- !u!1 &1619688920
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 9002490137306654709, guid: 81ad0c3ed86adeb43be7c4e62019bc75, type: 3}
+  sun: 10
+  cost: 2
 --- !u!114 &2051630640
 MonoBehaviour:
   m_ObjectHideFlags: 0
