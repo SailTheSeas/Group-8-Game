@@ -22,6 +22,11 @@ public class PlantBehaviours : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+
+    public void EnablePlant()
+    {
         isDead = false;
         switch (plantType)
         {
@@ -34,7 +39,7 @@ public class PlantBehaviours : MonoBehaviour
                 //InvokeRepeating("ShootNormalPea", workRate, workRate);
                 break;
             case PlantType.wallnut:
-                
+
                 //Nothing
                 break;
             case PlantType.cabbagepult:

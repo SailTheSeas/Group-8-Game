@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af53ff678c6991149b279456da89164a, type: 3}
+  m_Name: PlantStats
+  m_EditorClassIdentifier: 
+  rechargeTime:
+  - 7.5
+  - 7.5
+  - 30
+  - 30
+  - 7.5
+  - 7.5
+  - 7.5
+  plantCost: 320000006400000032000000320000009600000064000000af000000

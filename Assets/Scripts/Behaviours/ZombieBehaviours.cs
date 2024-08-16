@@ -11,14 +11,17 @@ public class ZombieBehaviours : MonoBehaviour
     [SerializeField] private ZombieType zombieType;
     [SerializeField] private float accessoryHealth;
     [SerializeField] private float jumpSpeed;
+    [SerializeField] private float postDeathHealth;
 
     [SerializeField] private GameObject accessory;
 
     [SerializeField] private int row;
+    [SerializeField] private LayerMask deadLayer;
     private float currentSpeed;
     bool isDead, canMove;
     bool isJumping;
 
+    private ZombieSpawner zombieSpawner;
     private Collider2D plant;
 
     private Vector3 jumpStart, jumpEnd;
@@ -71,12 +74,28 @@ public class ZombieBehaviours : MonoBehaviour
         return zombieType;
     }
 
+    public void SetZombieSpawner(ZombieSpawner newZombieSpawner)
+    {
+        zombieSpawner = newZombieSpawner;
+    }
+
     public void Damage(float damage)
     {
         zombieHealth -= damage;
         if (zombieHealth <= 0)
         {
-            Die();           
+            if (!isDead)
+            {
+                isDead = true;
+                this.GetComponent<SpriteRenderer>().color = Color.red;
+                StartCoroutine(DeathDelay());
+            } else 
+            {
+                this.gameObject.layer = deadLayer;
+                postDeathHealth -= damage;
+                if (postDeathHealth <= 0)
+                    this.GetComponent<Collider2D>().enabled = false;
+            }
         }
     }
 
@@ -87,17 +106,21 @@ public class ZombieBehaviours : MonoBehaviour
         {
             zombieType = ZombieType.Basic;
             accessory.SetActive(false);
-        }
+        } 
+
+    }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Die();
     }
 
     public void Die()
     {
-        if (!isDead)
-        {
-            /*Debug.Log(zombieName + " Died");*/
-            isDead = true;
-            Destroy(this.gameObject);
-        }
+        isDead = true;
+        zombieSpawner.KillZombie();
+        Destroy(this.gameObject);
     }
 
     public void SetRow(int newRow)

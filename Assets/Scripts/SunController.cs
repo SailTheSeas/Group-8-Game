@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class SunController : MonoBehaviour
 {
-    public int SunAmount;
+    
+    public int sunAmount;
     // Start is called before the first frame update
     void Start()
     {
-        SunAmount = 50;
+        sunAmount = 50;
     }
 
     // Update is called once per frame
@@ -16,14 +17,19 @@ public class SunController : MonoBehaviour
 
     public void PickupSun()
     {
-        SunAmount += 25;
+        sunAmount += 25;
     }
 
     public void SpendSun(int SunCost)
     {
-        if (SunAmount >= SunCost)
+        if (sunAmount >= SunCost)
         {
-            SunAmount -= SunCost;
+            sunAmount -= SunCost;
         }
+    }
+
+    public int GetSun()
+    {
+        return sunAmount;
     }
 }

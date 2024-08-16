@@ -106,7 +106,13 @@ MonoBehaviour:
   zombieDamage: 4.2
   zombieType: 5
   accessoryHealth: 1400
+  jumpSpeed: 0
+  postDeathHealth: 89
   accessory: {fileID: 8397769414058377084}
+  row: 0
+  deadLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &2007041095999591036
 BoxCollider2D:
   m_ObjectHideFlags: 0
