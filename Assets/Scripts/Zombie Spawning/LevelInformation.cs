@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Level Information", menuName = "ScriptableObjects/LevelInformation")]
 public class LevelInformation : ScriptableObject
@@ -9,7 +10,7 @@ public class LevelInformation : ScriptableObject
     public WaveInformation[] waves;
 
     public int currentWave = 0;
-
+    public Slider WaveSlider;
 
     public void Reset()
     {
@@ -49,10 +50,12 @@ public class LevelInformation : ScriptableObject
     public void NextWave()
     {
         currentWave++;
+        WaveSlider.value = currentWave;
     }
 
     public int GetCurrentWave()
     {
         return currentWave;
     }
+
 }
