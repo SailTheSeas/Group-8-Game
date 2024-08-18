@@ -91,7 +91,8 @@ public class ZombieBehaviours : MonoBehaviour
                 StartCoroutine(DeathDelay());
             } else 
             {
-                this.gameObject.layer = deadLayer;
+
+                //gameObject.layer = LayerMask.NameToLayer(deadLayer.ToString());
                 postDeathHealth -= damage;
                 if (postDeathHealth <= 0)
                     this.GetComponent<Collider2D>().enabled = false;
