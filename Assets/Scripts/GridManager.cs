@@ -4,7 +4,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public Vector2 gridSize = new Vector2(9, 5);  
-    public float cellSize = 1.0f;  
+    public float cellSizeY, cellSizeX;  
     public Vector2 gridOrigin = new Vector2(-4f, -2f);
 
     //public int sun = 10;
@@ -14,16 +14,16 @@ public class GridManager : MonoBehaviour
     public Vector3 SnapToGrid(Vector3 originalPosition)
     {
         Vector2 gridPosition = new Vector2(
-            Mathf.Round((originalPosition.x - gridOrigin.x) / cellSize),
-            Mathf.Round((originalPosition.y - gridOrigin.y) / cellSize)
+            Mathf.Round((originalPosition.x - gridOrigin.x) / cellSizeX),
+            Mathf.Round((originalPosition.y - gridOrigin.y) / cellSizeY)
         );
 
         gridPosition.x = Mathf.Clamp(gridPosition.x, 0, gridSize.x - 1);
         gridPosition.y = Mathf.Clamp(gridPosition.y, 0, gridSize.y - 1);
 
         Vector3 snappedPosition = new Vector3(
-            gridPosition.x * cellSize + gridOrigin.x,
-            gridPosition.y * cellSize + gridOrigin.y,
+            gridPosition.x * cellSizeX + gridOrigin.x,
+            gridPosition.y * cellSizeY + gridOrigin.y,
             0f
         );
 
@@ -33,8 +33,8 @@ public class GridManager : MonoBehaviour
     public Vector2Int WorldToGrid(Vector3 position)
     {
         Vector2 gridPosition = new Vector2(
-            Mathf.Round((position.x - gridOrigin.x) / cellSize),
-            Mathf.Round((position.y - gridOrigin.y) / cellSize)
+            Mathf.Round((position.x - gridOrigin.x) / cellSizeX),
+            Mathf.Round((position.y - gridOrigin.y) / cellSizeY)
         );
 
         return new Vector2Int(
