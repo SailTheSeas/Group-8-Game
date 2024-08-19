@@ -174,6 +174,7 @@ public class ZombieBehaviours : MonoBehaviour
                 projectile.DestroyProjectile();
             }
         }
+
         if (zombieType == ZombieType.Pole)
         {
             if (other.transform.TryGetComponent<PlantBehaviours>(out PlantBehaviours plant))
@@ -187,6 +188,16 @@ public class ZombieBehaviours : MonoBehaviour
             }
         }
 
+        if (other.transform.TryGetComponent<Lawnmower>(out Lawnmower lawnMower))
+        {
+            lawnMower.ActivateMower();
+            Die();
+        }
+
+        if (other.transform.TryGetComponent<GameController>(out GameController gameController))
+        {
+            gameController.LoseGame();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

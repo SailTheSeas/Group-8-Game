@@ -103,7 +103,7 @@ MonoBehaviour:
   zombieName: Rugby Zombie
   zombieHealth: 181
   zombieSpeed: 0.003
-  zombieDamage: 4.2
+  zombieDamage: 3.8
   zombieType: 5
   accessoryHealth: 1400
   jumpSpeed: 0
