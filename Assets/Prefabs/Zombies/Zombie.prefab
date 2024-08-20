@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Zombie
   zombieHealth: 181
-  zombieSpeed: 0.003
+  zombieSpeed: 0.006
   zombieDamage: 3.8
   zombieType: 0
   accessoryHealth: 0

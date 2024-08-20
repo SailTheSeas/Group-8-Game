@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Pole Vaulting Zombie
   zombieHealth: 335
-  zombieSpeed: 0.005
+  zombieSpeed: 0.011
   zombieDamage: 3.8
   zombieType: 4
   accessoryHealth: 0

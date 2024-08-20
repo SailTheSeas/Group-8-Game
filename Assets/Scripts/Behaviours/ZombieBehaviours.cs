@@ -63,7 +63,7 @@ public class ZombieBehaviours : MonoBehaviour
                 isJumping = false;
                 canMove = true;
                 zombieType = ZombieType.Basic;
-                zombieSpeed = 0.003f;
+                zombieSpeed = 0.006f;
                 currentSpeed = zombieSpeed;
             }
         }

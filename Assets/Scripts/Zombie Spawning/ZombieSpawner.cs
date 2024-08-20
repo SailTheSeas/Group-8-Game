@@ -12,10 +12,11 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private Vector3[] spawnPositions;
     [SerializeField] private int numOfLevels;
 
-    private int zombieCount, levelCount;
+    private int zombieCount, levelCount, difficulty;
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = 1;
         zombieCount = 0;
         levelCount = 0;
         levels[levelCount].Reset();
@@ -34,20 +35,23 @@ public class ZombieSpawner : MonoBehaviour
         ZombieType[] zombiesToSpawn = levels[levelCount].GetZombiesToSpawn();
         int[] numZombiesToSpawn = levels[levelCount].GetNumZombiesToSpawn();
         int zombieVariations = levels[levelCount].GetZombieVariations();
-
-        for (int i = 0; i < zombieVariations; i++)
+        for (int k = 0; k < difficulty; k++)
         {
-            for (int j = 0; j < numZombiesToSpawn[i]; j++)
+            for (int i = 0; i < zombieVariations; i++)
             {
-                StartCoroutine(SpawnDelay(GetZombieToSpawn(zombiesToSpawn[i])));
-                /*int row = Random.Range(0, 4);
-                GameObject zombie = Instantiate(GetZombieToSpawn(zombiesToSpawn[i]), spawnPositions[row], Quaternion.identity);
-                zombie.GetComponent<ZombieBehaviours>().SetRow(row);
-                zombie.GetComponent<ZombieBehaviours>().SetZombieSpawner(this.GetComponent<ZombieSpawner>());*/
-                
+                for (int j = 0; j < numZombiesToSpawn[i]; j++)
+                {
+                    StartCoroutine(SpawnDelay(GetZombieToSpawn(zombiesToSpawn[i])));
+                    /*int row = Random.Range(0, 4);
+                    GameObject zombie = Instantiate(GetZombieToSpawn(zombiesToSpawn[i]), spawnPositions[row], Quaternion.identity);
+                    zombie.GetComponent<ZombieBehaviours>().SetRow(row);
+                    zombie.GetComponent<ZombieBehaviours>().SetZombieSpawner(this.GetComponent<ZombieSpawner>());*/
+
+                }
+
             }
-            
         }
+
     }
 
     private void SpawnZombie(GameObject zombieToSpawn)
@@ -67,7 +71,10 @@ public class ZombieSpawner : MonoBehaviour
             {
                 levelCount++;
                 if (levelCount == numOfLevels)
+                {
                     levelCount = 0;
+                    difficulty++;
+                }
                 levels[levelCount].Reset();
                 StartCoroutine(LevelDelay());
             } else
@@ -80,7 +87,7 @@ public class ZombieSpawner : MonoBehaviour
 
     IEnumerator SpawnDelay(GameObject zombieToSpawn)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0f);
         SpawnZombie(zombieToSpawn);
     }
 

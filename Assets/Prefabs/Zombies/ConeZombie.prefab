@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Conehead Zombie
   zombieHealth: 181
-  zombieSpeed: 0.003
+  zombieSpeed: 0.006
   zombieDamage: 3.8
   zombieType: 1
   accessoryHealth: 370
