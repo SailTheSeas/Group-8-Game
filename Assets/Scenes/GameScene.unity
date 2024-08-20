@@ -191,6 +191,10 @@ PrefabInstance:
       value: Lawnmower (4)
       objectReference: {fileID: 0}
     - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
+      propertyPath: row
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
       propertyPath: lawnMowerEnd.x
       value: 8.22
       objectReference: {fileID: 0}
@@ -2120,6 +2124,10 @@ PrefabInstance:
       value: Lawnmower (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
+      propertyPath: row
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
       propertyPath: lawnMowerEnd.x
       value: 8.22
       objectReference: {fileID: 0}
@@ -2789,6 +2797,10 @@ PrefabInstance:
       value: Lawnmower (3)
       objectReference: {fileID: 0}
     - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
+      propertyPath: row
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
       propertyPath: lawnMowerEnd.x
       value: 8.22
       objectReference: {fileID: 0}
@@ -3188,7 +3200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 9, y: 5}
   cellSizeY: 1.6
-  cellSizeX: 1.2
+  cellSizeX: 1.5
   gridOrigin: {x: -5.9, y: -3.5}
 --- !u!4 &1647659885
 Transform:
@@ -3420,6 +3432,10 @@ PrefabInstance:
     - target: {fileID: 6209808476786332661, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
       propertyPath: m_Name
       value: Lawnmower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
+      propertyPath: row
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6286760706299346042, guid: 87601b91bc7238e4fb12ec10a0db1138, type: 3}
       propertyPath: lawnMowerEnd.x

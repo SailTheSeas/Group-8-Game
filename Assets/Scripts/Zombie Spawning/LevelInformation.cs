@@ -8,13 +8,14 @@ public class LevelInformation : ScriptableObject
 {
     public int numOfWaves;
     public WaveInformation[] waves;
-
-    public int currentWave = 0;
     public Slider WaveSlider;
+    public int currentWave = 0;
+    
 
     void Start()
     {
-        WaveSlider = GameObject.Find("WaveSlider").GetComponent<Slider>();
+        //WaveSlider = GameObject.Find("WaveSlider").GetComponent<Slider>();
+        WaveSlider = FindObjectOfType<Slider>();
     }
     public void Reset()
     {

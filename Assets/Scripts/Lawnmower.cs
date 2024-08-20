@@ -7,6 +7,7 @@ public class Lawnmower : MonoBehaviour
     [SerializeField] private GameObject lawnMower;
     [SerializeField] private Vector3 lawnMowerEnd;
     [SerializeField] private float lawnMowerSpeed;
+    [SerializeField] private int row;
 
     private Vector3 mowStart;
     private float mowStartTime;
@@ -44,5 +45,10 @@ public class Lawnmower : MonoBehaviour
             isActive = true;
             isUsed = true;
         }
+    }
+
+    public int GetRow()
+    {
+        return row;
     }
 }

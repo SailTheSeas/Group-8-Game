@@ -106,6 +106,11 @@ public class Projectile : MonoBehaviour
         return type == ProjectileType.icepea;
     }
 
+    public ProjectileType GetProjectileType()
+    {
+        return type;
+    }
+
     IEnumerator DestroySelf()
     {
         yield return new WaitForSeconds(8f);

@@ -17,17 +17,21 @@ public class PlantBehaviours : MonoBehaviour
 
     [SerializeField] private int row;
 
+    private bool isActive;
     private bool canAttack, isDead;
     private RaycastHit2D hit;
     // Start is called before the first frame update
     void Start()
     {
-
+        isActive = false;
+        this.GetComponent<Collider2D>().enabled = false;
     }
 
     public void EnablePlant()
     {
         isDead = false;
+        isActive = true;
+        this.GetComponent<Collider2D>().enabled = true;
         switch (plantType)
         {
             case PlantType.sunfower:
@@ -171,10 +175,13 @@ public class PlantBehaviours : MonoBehaviour
 
     private void Chomp(ZombieBehaviours other)
     {
-        //Debug.Log("Eaten");
-        other.Die();
-        canAttack = false;
-        InvokeRepeating("ChompCooldown", startupTime, startupTime);
+        if (isActive)
+        {
+            //Debug.Log("Eaten");
+            other.Die();
+            canAttack = false;
+            InvokeRepeating("ChompCooldown", startupTime, startupTime);
+        }
     }
 
     private void ChompCooldown()
@@ -186,6 +193,7 @@ public class PlantBehaviours : MonoBehaviour
 
     private void Arm()
     {
+        
         //Debug.Log("Armed");
         canAttack = true;
         plantHealth = 9999999;

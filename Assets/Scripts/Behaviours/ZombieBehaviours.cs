@@ -87,7 +87,7 @@ public class ZombieBehaviours : MonoBehaviour
             if (!isDead)
             {
                 isDead = true;
-                this.GetComponent<SpriteRenderer>().color = Color.red;
+                //this.GetComponent<SpriteRenderer>().color = Color.red;
                 StartCoroutine(DeathDelay());
             } else 
             {
@@ -127,6 +127,7 @@ public class ZombieBehaviours : MonoBehaviour
     public void SetRow(int newRow)
     {
         row = newRow;
+        this.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
     }
 
     IEnumerator SlowDuration()
@@ -153,7 +154,10 @@ public class ZombieBehaviours : MonoBehaviour
                         DamageAccessory(projectile.GetDamage());
                         break;
                     case ZombieType.Door:
-                        DamageAccessory(projectile.GetDamage());
+                        if (projectile.GetProjectileType() == ProjectileType.cabbage)
+                            Damage(projectile.GetDamage());
+                        else
+                            DamageAccessory(projectile.GetDamage());
                         break;
                     case ZombieType.Pole:
                         Damage(projectile.GetDamage());
@@ -190,8 +194,11 @@ public class ZombieBehaviours : MonoBehaviour
 
         if (other.transform.TryGetComponent<Lawnmower>(out Lawnmower lawnMower))
         {
-            lawnMower.ActivateMower();
-            Die();
+            if (lawnMower.GetRow() == row)
+            {
+                lawnMower.ActivateMower();
+                Die();
+            }
         }
 
         if (other.transform.TryGetComponent<GameController>(out GameController gameController))
