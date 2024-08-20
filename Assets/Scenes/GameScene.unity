@@ -1671,6 +1671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1279949661}
   - component: {fileID: 1279949662}
+  - component: {fileID: 1279949663}
   m_Layer: 5
   m_Name: WaveSlider
   m_TagString: Untagged
@@ -1751,6 +1752,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1279949663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279949660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa769e67b0ec1aa4ebe5b7c26407d04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelInfo: {fileID: 11400000, guid: c605ae4b054b404488560098266d6376, type: 2}
+  waveSlider: {fileID: 0}
 --- !u!1 &1351131138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 9, y: 5}
-  cellSize: 1
+  cellSizeY: 0
+  cellSizeX: 0
   gridOrigin: {x: -7, y: -4}
 --- !u!4 &1647659885
 Transform:
