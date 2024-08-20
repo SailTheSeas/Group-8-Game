@@ -12,6 +12,10 @@ public class LevelInformation : ScriptableObject
     public int currentWave = 0;
     public Slider WaveSlider;
 
+    void Start()
+    {
+        WaveSlider = GameObject.Find("WaveSlider").GetComponent<Slider>();
+    }
     public void Reset()
     {
         currentWave = 0;
@@ -50,12 +54,16 @@ public class LevelInformation : ScriptableObject
     public void NextWave()
     {
         currentWave++;
-        WaveSlider.value = currentWave;
     }
 
     public int GetCurrentWave()
     {
         return currentWave;
+    }
+
+    void Update()
+    {
+        WaveSlider.value = currentWave;
     }
 
 }
