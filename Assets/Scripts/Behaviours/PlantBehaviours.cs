@@ -20,11 +20,23 @@ public class PlantBehaviours : MonoBehaviour
     private bool isActive;
     private bool canAttack, isDead;
     private RaycastHit2D hit;
+
+    [SerializeField] private Renderer plantRenderer;
+    [SerializeField] private Material plantMaterial;
+    [SerializeField] private Color originalColor;
+    [SerializeField] private float brightnessChangeDuration;
     // Start is called before the first frame update
     void Start()
     {
         isActive = false;
         this.GetComponent<Collider2D>().enabled = false;
+        plantRenderer = GetComponent<Renderer>();
+        brightnessChangeDuration = workRate;
+        if (plantRenderer != null)
+        {
+            plantMaterial = plantRenderer.material;
+            originalColor = plantMaterial.color; 
+        }
     }
 
     public void EnablePlant()
@@ -36,6 +48,7 @@ public class PlantBehaviours : MonoBehaviour
         {
             case PlantType.sunfower:
                 InvokeRepeating("ProduceSun", workRate, workRate);
+                StartCoroutine(ChangeBrightness());
                 break;
             case PlantType.peashooter:
                 canAttack = false;
@@ -141,6 +154,29 @@ public class PlantBehaviours : MonoBehaviour
     {
         Instantiate(plantProjectile, this.transform.position, Quaternion.identity);
         //Debug.Log("Made Sun");
+    }
+
+
+    private IEnumerator ChangeBrightness()
+    {
+        if (plantMaterial == null)
+        {
+            yield break; // Exit if the material is not set
+        }
+
+        while (true)
+        {
+            float elapsedTime = 0f;
+            while (elapsedTime < workRate)
+            {
+                elapsedTime += Time.deltaTime;
+                float lerpFactor = Mathf.InverseLerp(workRate - brightnessChangeDuration, workRate, elapsedTime);
+                float brightness = Mathf.Lerp(0.5f, 1f, lerpFactor); 
+                plantMaterial.color = originalColor * brightness; 
+                yield return null;
+            }
+            yield return null;
+        }
     }
 
     private void ShootPea()
