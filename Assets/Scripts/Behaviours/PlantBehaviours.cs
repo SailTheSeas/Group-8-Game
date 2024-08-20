@@ -97,6 +97,7 @@ public class PlantBehaviours : MonoBehaviour
     public void SetRow(int newRow)
     {
         row = newRow;
+        this.GetComponent<SpriteRenderer>().sortingOrder = (5-row);
     }
     //Getters
     public float GetCooldown()
