@@ -111,7 +111,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   mapEdge: {x: 8, y: 0}
+  visualChange1: {fileID: 21300000, guid: dea5b93132ff1544a94f1a30a92904fd, type: 3}
+  visualChange2: {fileID: 21300000, guid: 9258394524106e146a923e4b33f57278, type: 3}
   row: 0
+  plantRenderer: {fileID: 0}
+  plantMaterial: {fileID: 0}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  brightnessChangeDuration: 0
 --- !u!61 &4358945489709236314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +161,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9, y: 6}
+  m_Size: {x: 5, y: 6}
   m_EdgeRadius: 0
 --- !u!50 &5279287727780720528
 Rigidbody2D:

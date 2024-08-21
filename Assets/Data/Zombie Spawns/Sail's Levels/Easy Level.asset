@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2706af095f3608a41a488295205eabbf, type: 3}
+  m_Name: Easy Level
+  m_EditorClassIdentifier: 
+  numOfWaves: 6
+  waves:
+  - {fileID: 11400000, guid: e46fa79b032522a4c8b2cfaa85a155aa, type: 2}
+  - {fileID: 11400000, guid: 78d7496c1a0040c489b54216dd66d014, type: 2}
+  - {fileID: 11400000, guid: 4d84d065264ab8f4db100f6c357c3d32, type: 2}
+  - {fileID: 11400000, guid: 42836727c59968d45b9f4bf0c14b1aee, type: 2}
+  - {fileID: 11400000, guid: 894c54c082bb99a47baeeec16c882019, type: 2}
+  - {fileID: 11400000, guid: 9738ee73294d0bf4285dc92c93449500, type: 2}
+  WaveSlider: {fileID: 0}
+  currentWave: 0

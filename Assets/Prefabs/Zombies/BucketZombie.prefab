@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.96, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
+  m_LocalScale: {x: 0.11, y: 0.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5415671665948793221}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 667e9109be210ef43a8d77d92d28a1cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ca58d64dc3497c4485e94afc5bd6a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,12 @@ MonoBehaviour:
   accessoryHealth: 1100
   jumpSpeed: 0
   postDeathHealth: 89
+  accessoryHealthGates:
+  - 750
+  - 400
   accessory: {fileID: 7840323098036392509}
+  visualChange1: {fileID: 21300000, guid: 9455a88d43d09454ca29ffca3bcd19fb, type: 3}
+  visualChange2: {fileID: 21300000, guid: b43697506ccee0d41a93911925880a7b, type: 3}
   row: 0
   deadLayer:
     serializedVersion: 2
@@ -149,7 +154,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.38, y: 5.91}
+    oldSize: {x: 10, y: 16.02}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -201,7 +206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5415671665948793221
 Transform:
   m_ObjectHideFlags: 0
@@ -211,9 +216,9 @@ Transform:
   m_GameObject: {fileID: 7840323098036392509}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.327, z: 0}
-  m_LocalScale: {x: 1, y: 0.39999998, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -2.48, y: 6.79, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5229929532104515505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -255,11 +260,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2094090509
+  m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c03cd0ab44a41d24e87a292b7209233b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -13,7 +13,10 @@ public class ZombieBehaviours : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float postDeathHealth;
 
+    [SerializeField] private float[] accessoryHealthGates;
+
     [SerializeField] private GameObject accessory;
+    [SerializeField] private Sprite visualChange1, visualChange2;
 
     [SerializeField] private int row;
     [SerializeField] private LayerMask deadLayer;
@@ -103,7 +106,14 @@ public class ZombieBehaviours : MonoBehaviour
     public void DamageAccessory(float damage)
     {
         accessoryHealth -= damage;
-        if (zombieHealth <= 0)
+        if (accessoryHealth <= accessoryHealthGates[0] && accessoryHealth > accessoryHealthGates[1])
+        {
+            accessory.GetComponent<SpriteRenderer>().sprite = visualChange1;
+        } else if (accessoryHealth <= accessoryHealthGates[1] && accessoryHealth > 0)
+        {
+            accessory.GetComponent<SpriteRenderer>().sprite = visualChange2;
+
+        } else if (accessoryHealth <= 0)
         {
             zombieType = ZombieType.Basic;
             accessory.SetActive(false);
@@ -127,7 +137,10 @@ public class ZombieBehaviours : MonoBehaviour
     public void SetRow(int newRow)
     {
         row = newRow;
+
         this.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
+        if (accessoryHealth > 0)
+            accessory.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
     }
 
     IEnumerator SlowDuration()
@@ -170,7 +183,7 @@ public class ZombieBehaviours : MonoBehaviour
                 }
 
 
-                if (projectile.IsIce())
+                if (projectile.IsIce() && zombieType != ZombieType.Door)
                 {
                     currentSpeed = zombieSpeed / 2;
                     StartCoroutine(SlowDuration());

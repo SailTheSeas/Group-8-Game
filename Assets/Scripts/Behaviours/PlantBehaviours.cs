@@ -15,6 +15,7 @@ public class PlantBehaviours : MonoBehaviour
     [SerializeField] private LayerMask zombieLayer;
     [SerializeField] private Vector2 mapEdge;
 
+    [SerializeField] private Sprite visualChange1, visualChange2;
     [SerializeField] private int row;
 
     private Vector2Int positionInGrid;
@@ -141,6 +142,13 @@ public class PlantBehaviours : MonoBehaviour
     public void Damage(float damage)
     {
         plantHealth -= damage;
+        if (plantType == PlantType.wallnut)
+        {
+            if (plantHealth <= 2667 && plantHealth > 1333)
+                this.GetComponent<SpriteRenderer>().sprite = visualChange1;
+            else if (plantHealth <= 1333 )
+                this.GetComponent<SpriteRenderer>().sprite = visualChange2;
+        }
         if (plantHealth <= 0)
         {
            Die();
@@ -223,6 +231,7 @@ public class PlantBehaviours : MonoBehaviour
             //Debug.Log("Eaten");
             other.Die();
             canAttack = false;
+            this.GetComponent<SpriteRenderer>().sprite = visualChange1;
             InvokeRepeating("ChompCooldown", startupTime, startupTime);
         }
     }
@@ -230,14 +239,16 @@ public class PlantBehaviours : MonoBehaviour
     private void ChompCooldown()
     {
         CancelInvoke("ChompCooldown");
+        this.GetComponent<SpriteRenderer>().sprite = visualChange2;
         //Debug.Log("Chomp Ready");
         canAttack = true;
     }
 
     private void Arm()
     {
-        
+
         //Debug.Log("Armed");
+        this.GetComponent<SpriteRenderer>().sprite = visualChange1;
         canAttack = true;
         plantHealth = 9999999;
         CancelInvoke("Arm");

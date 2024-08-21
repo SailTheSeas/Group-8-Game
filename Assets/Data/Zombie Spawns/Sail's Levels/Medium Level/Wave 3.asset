@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ff2477d1ec64d941be13461113939dd, type: 3}
-  m_Name: Wave 1
+  m_Name: Wave 3
   m_EditorClassIdentifier: 
-  totalNumOfZombies: 3
+  totalNumOfZombies: 6
   numOfZombieVariations: 3
-  numOfTypeOfZombie: 010000000100000001000000
-  zombiesInWave: 010000000200000003000000
+  numOfTypeOfZombie: 040000000100000001000000
+  zombiesInWave: 000000000100000002000000
   isFlag: 0

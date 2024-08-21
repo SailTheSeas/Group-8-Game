@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2706af095f3608a41a488295205eabbf, type: 3}
+  m_Name: Medium Level
+  m_EditorClassIdentifier: 
+  numOfWaves: 7
+  waves:
+  - {fileID: 11400000, guid: ba41942140616214c96769f7808a6f11, type: 2}
+  - {fileID: 11400000, guid: 8f86876d43587944d9a9ed47be91a28b, type: 2}
+  - {fileID: 11400000, guid: 33ae849f786f50b439e6dfc72558172c, type: 2}
+  - {fileID: 11400000, guid: ccb9dbb5a2269464ba827b9d14951125, type: 2}
+  - {fileID: 11400000, guid: 4801c3fe29aeb2c44bbbbc075cf5121d, type: 2}
+  - {fileID: 11400000, guid: a78168328ac8f4f4382db5631134ba1d, type: 2}
+  - {fileID: 11400000, guid: cd9ae862172b4fc4386ce3f46e90fc6e, type: 2}
+  WaveSlider: {fileID: 0}
+  currentWave: 0
