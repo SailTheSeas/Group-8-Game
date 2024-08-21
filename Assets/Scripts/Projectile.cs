@@ -47,7 +47,7 @@ public class Projectile : MonoBehaviour
         if (type == ProjectileType.cabbage)
         {
             //projectile = this.transform;
-            if (zombie != null)
+            if (zombie != null && start != null)
             {
                 Vector3 center = (start.position + zombie.position) * 0.5f;
 
@@ -70,6 +70,7 @@ public class Projectile : MonoBehaviour
     public void SetRow(int newRow)
     {
         row = newRow;
+        this.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
     }
 
     public int GetRow()

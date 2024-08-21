@@ -65,6 +65,7 @@ public class PlantPlacer : MonoBehaviour
                     currentPlantPressed.interactable = false;
                     //placePlant = null;
                     placePlant.GetComponent<PlantBehaviours>().SetRow(gridPosition.y);
+                    placePlant.GetComponent<PlantBehaviours>().SetGridPosition(gridPosition);
                     placePlant.GetComponent<PlantBehaviours>().EnablePlant();
                     isPlacing = false;
                     sunController.SpendSun(plantStats.plantCost[plantType]);

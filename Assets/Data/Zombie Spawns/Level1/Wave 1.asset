@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff2477d1ec64d941be13461113939dd, type: 3}
   m_Name: Wave 1
   m_EditorClassIdentifier: 
-  totalNumOfZombies: 2
+  totalNumOfZombies: 1
   numOfZombieVariations: 1
-  numOfTypeOfZombie: 02000000
+  numOfTypeOfZombie: 01000000
   zombiesInWave: 00000000
   isFlag: 0

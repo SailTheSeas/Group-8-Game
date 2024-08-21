@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Buckethead Zombie
   zombieHealth: 181
-  zombieSpeed: 0.004
+  zombieSpeed: 0.002
   zombieDamage: 3.8
   zombieType: 2
   accessoryHealth: 1100

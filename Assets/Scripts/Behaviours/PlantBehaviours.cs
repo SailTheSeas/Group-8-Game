@@ -17,6 +17,7 @@ public class PlantBehaviours : MonoBehaviour
 
     [SerializeField] private int row;
 
+    private Vector2Int positionInGrid;
     private bool isActive;
     private bool canAttack, isDead;
     private RaycastHit2D hit;
@@ -116,6 +117,11 @@ public class PlantBehaviours : MonoBehaviour
         row = newRow;
         this.GetComponent<SpriteRenderer>().sortingOrder = (5-row);
     }
+
+    public void SetGridPosition(Vector2Int newPosition)
+    {
+        positionInGrid = newPosition;
+    }
     //Getters
     public float GetCooldown()
     {
@@ -146,6 +152,7 @@ public class PlantBehaviours : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
+            FindObjectOfType<GridManager>().SetCellOccupied(positionInGrid, false);
             Destroy(this.gameObject);
         }
     }

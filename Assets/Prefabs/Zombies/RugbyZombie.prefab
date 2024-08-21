@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Rugby Zombie
   zombieHealth: 181
-  zombieSpeed: 0.004
+  zombieSpeed: 0.002
   zombieDamage: 3.8
   zombieType: 5
   accessoryHealth: 1400
