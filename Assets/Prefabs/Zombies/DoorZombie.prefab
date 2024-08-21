@@ -192,7 +192,9 @@ MonoBehaviour:
   accessoryHealth: 1100
   jumpSpeed: 0
   postDeathHealth: 89
-  accessoryHealthGates: []
+  accessoryHealthGates:
+  - 790
+  - 430
   accessory: {fileID: 5178210895996971512}
   visualChange1: {fileID: 21300000, guid: c8e98c96093773d478e504eefbd1a6e7, type: 3}
   visualChange2: {fileID: 21300000, guid: 537e1d561db617644b5cbe941fd0f90a, type: 3}
