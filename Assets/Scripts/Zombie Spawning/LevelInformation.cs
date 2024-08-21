@@ -10,6 +10,7 @@ public class LevelInformation : ScriptableObject
     public WaveInformation[] waves;
     public Slider WaveSlider;
     public int currentWave = 0;
+    public bool FlagLevel = false;
     
 
     void Start()
@@ -43,6 +44,7 @@ public class LevelInformation : ScriptableObject
 
     public bool IsFlagWave()
     {
+        FlagLevel = true;
         return waves[currentWave].isFlag;
     }
 
