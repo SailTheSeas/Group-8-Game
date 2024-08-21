@@ -2405,6 +2405,9 @@ MonoBehaviour:
   levelInfo: {fileID: 11400000, guid: 7a19b4bc10122e44090c673a44922fdf, type: 2}
   waveSlider: {fileID: 0}
   SliderValue: 0
+  WaveText: {fileID: 6153060995988875650, guid: 45da0c5a05b9c8e4f8a39e866f62578a, type: 3}
+  CreatedText: 0
+  TextPrefab: {fileID: 0}
 --- !u!1 &1130588292
 GameObject:
   m_ObjectHideFlags: 0
