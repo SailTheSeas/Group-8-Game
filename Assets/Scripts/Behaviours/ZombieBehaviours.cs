@@ -108,10 +108,10 @@ public class ZombieBehaviours : MonoBehaviour
         accessoryHealth -= damage;
         if (accessoryHealth <= accessoryHealthGates[0] && accessoryHealth > accessoryHealthGates[1])
         {
-            GetComponent<SpriteRenderer>().sprite = visualChange1;
-        } else if (accessoryHealth <= accessoryHealthGates[1])
+            accessory.GetComponent<SpriteRenderer>().sprite = visualChange1;
+        } else if (accessoryHealth <= accessoryHealthGates[1] && accessoryHealth > 0)
         {
-            GetComponent<SpriteRenderer>().sprite = visualChange2;
+            accessory.GetComponent<SpriteRenderer>().sprite = visualChange2;
 
         } else if (accessoryHealth <= 0)
         {
@@ -137,7 +137,10 @@ public class ZombieBehaviours : MonoBehaviour
     public void SetRow(int newRow)
     {
         row = newRow;
+
         this.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
+        if (accessoryHealth > 0)
+            accessory.GetComponent<SpriteRenderer>().sortingOrder = (5 - row);
     }
 
     IEnumerator SlowDuration()
@@ -180,7 +183,7 @@ public class ZombieBehaviours : MonoBehaviour
                 }
 
 
-                if (projectile.IsIce())
+                if (projectile.IsIce() && zombieType != ZombieType.Door)
                 {
                     currentSpeed = zombieSpeed / 2;
                     StartCoroutine(SlowDuration());
