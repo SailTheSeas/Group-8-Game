@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2706af095f3608a41a488295205eabbf, type: 3}
+  m_Name: Hard Level
+  m_EditorClassIdentifier: 
+  numOfWaves: 10
+  waves:
+  - {fileID: 11400000, guid: 2e57214d7d546b549aaee51abfa4e10f, type: 2}
+  - {fileID: 11400000, guid: 3548ab0bf1a5d12429bdad0e38b9e62e, type: 2}
+  - {fileID: 11400000, guid: f7c5213b9f33fa84990196db5bfadb61, type: 2}
+  - {fileID: 11400000, guid: 3b3172a8b0c510640a648e4d87abaf29, type: 2}
+  - {fileID: 11400000, guid: 6d74b57aca881df4ba4fbc42b6f535c6, type: 2}
+  - {fileID: 11400000, guid: b170c168c13e3e34d8d187c23c130d14, type: 2}
+  - {fileID: 11400000, guid: 5d95a65ffa5a91240abb39585c88ef33, type: 2}
+  - {fileID: 11400000, guid: a848a39e0ef1fe84d9b9f13395ca7f64, type: 2}
+  - {fileID: 11400000, guid: 47f16ac35b9071e4db9d56b598ea49f4, type: 2}
+  - {fileID: 11400000, guid: 24f6fea84cde1d948b91fc501ea3587f, type: 2}
+  WaveSlider: {fileID: 0}
+  currentWave: 0
