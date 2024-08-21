@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Accessory
+    uniqueID: 2200876787
+    locked: 0

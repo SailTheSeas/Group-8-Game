@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59f1cb93c34e9424d91534576348877c, type: 2}
   - {fileID: 11400000, guid: 7bcd300af8637d94686d44073649b261, type: 2}
   WaveSlider: {fileID: 0}
-  currentWave: 0
+  currentWave: 1
