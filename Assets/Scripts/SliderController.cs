@@ -1,10 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+
 
 public class UIController : MonoBehaviour
 {
     public LevelInformation levelInfo;
     public Slider waveSlider;
+    public float SliderValue;
+    public GameObject WaveText;
+    public bool CreatedText = false;
+    public GameObject TextPrefab;
 
     void Start()
     {
@@ -18,7 +24,24 @@ public class UIController : MonoBehaviour
     {
         if (waveSlider != null && levelInfo != null)
         {
-            waveSlider.value = levelInfo.GetCurrentWave();
+            //waveSlider.value = levelInfo.GetCurrentWave();
         }
+
+        if (levelInfo.FlagLevel && !CreatedText)
+        {
+            Debug.Log("Flag Level");
+            SliderValue = SliderValue + Time.deltaTime * 0.65f;
+            waveSlider.value = SliderValue;
+            GameObject Canvas = GameObject.Find("Canvas");
+            TextPrefab = Instantiate(WaveText, Canvas.transform.position, Quaternion.identity, Canvas.transform);
+            CreatedText = true;
+            StartCoroutine(DestroyText(TextPrefab));
+        }
+    }
+
+    IEnumerator DestroyText(GameObject TextPrefab)
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(TextPrefab);
     }
 }
