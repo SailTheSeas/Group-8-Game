@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ff2477d1ec64d941be13461113939dd, type: 3}
-  m_Name: Wave 3
+  m_Script: {fileID: 11500000, guid: 2706af095f3608a41a488295205eabbf, type: 3}
+  m_Name: Amro's Level 2
   m_EditorClassIdentifier: 
-  totalNumOfZombies: 4
-  numOfZombieVariations: 3
-  numOfTypeOfZombie: 020000000100000001000000
-  zombiesInWave: 000000000100000002000000
-  isFlag: 0
+  numOfWaves: 3
+  waves:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  WaveSlider: {fileID: 0}
+  currentWave: 0
+  FlagLevel: 0
