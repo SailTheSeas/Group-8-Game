@@ -11,7 +11,8 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private float startDelay, waveDelay, levelDelay;
     [SerializeField] private Vector3[] spawnPositions;
     [SerializeField] private int numOfLevels;
-
+    [SerializeField] private GameObject flagAnnouncment;
+    [SerializeField] private UIController slider;
     private int zombieCount, levelCount, difficulty;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +32,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnWave()
     {
-        zombieCount = levels[levelCount].GetEnemyCount();
+        zombieCount += levels[levelCount].GetEnemyCount();
         ZombieType[] zombiesToSpawn = levels[levelCount].GetZombiesToSpawn();
         int[] numZombiesToSpawn = levels[levelCount].GetNumZombiesToSpawn();
         int zombieVariations = levels[levelCount].GetZombieVariations();
@@ -51,7 +52,9 @@ public class ZombieSpawner : MonoBehaviour
 
             }
         }
-
+        if (levels[levelCount].IsFlagWave(0) == false)
+            if (levels[levelCount].IsFlagWave(1) == false)
+            StartCoroutine(WaveDelayFirst());
     }
 
     private void SpawnZombie(GameObject zombieToSpawn)
@@ -69,6 +72,7 @@ public class ZombieSpawner : MonoBehaviour
         zombieCount--;
         if (zombieCount <= 0)
         {
+            StopCoroutine(WaveDelayFirst());
             if (levels[levelCount].IsFinalWave())
             {
                 levelCount++;
@@ -82,9 +86,21 @@ public class ZombieSpawner : MonoBehaviour
             } else
             {
                 levels[levelCount].NextWave();
+                slider.UpdateLevelData(levels[levelCount]);
+                if (levels[levelCount].IsFlagWave(0) == true)
+                {
+                    flagAnnouncment.SetActive(true);
+                    StartCoroutine(FlagDelay());
+                }
                 StartCoroutine(WaveDelay());
             }
         }
+    }
+
+    IEnumerator FlagDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        flagAnnouncment.SetActive(false);
     }
 
     IEnumerator SpawnDelay(GameObject zombieToSpawn)
@@ -96,6 +112,12 @@ public class ZombieSpawner : MonoBehaviour
     IEnumerator StartDelay()
     {
         yield return new WaitForSeconds(startDelay);
+        SpawnWave();
+    }
+
+    IEnumerator WaveDelayFirst()
+    {
+        yield return new WaitForSeconds(waveDelay*10);
         SpawnWave();
     }
 

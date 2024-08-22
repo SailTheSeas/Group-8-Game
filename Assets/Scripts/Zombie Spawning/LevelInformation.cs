@@ -37,15 +37,20 @@ public class LevelInformation : ScriptableObject
         return waves[currentWave].zombiesInWave;
     }
 
+    public int GetWaveCount()
+    {
+        return numOfWaves;
+    }
+
     public int GetEnemyCount()
     {
         return waves[currentWave].totalNumOfZombies;
     }
 
-    public bool IsFlagWave()
+    public bool IsFlagWave(int waveToCheck)
     {
         FlagLevel = true;
-        return waves[currentWave].isFlag;
+        return waves[currentWave + waveToCheck].isFlag;
     }
 
 

@@ -102,13 +102,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieName: Pole Vaulting Zombie
   zombieHealth: 335
-  zombieSpeed: 0.011
+  zombieSpeed: 0.06
   zombieDamage: 3.8
   zombieType: 4
   accessoryHealth: 0
   jumpSpeed: 2.5
   postDeathHealth: 165
+  accessoryHealthGates: []
   accessory: {fileID: 0}
+  visualChange1: {fileID: 0}
+  visualChange2: {fileID: 0}
   row: 0
   deadLayer:
     serializedVersion: 2

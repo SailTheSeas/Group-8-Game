@@ -13,7 +13,7 @@ public class PlantBehaviours : MonoBehaviour
     [SerializeField] private PlantType plantType;
     [SerializeField] private GameObject plantProjectile;
     [SerializeField] private LayerMask zombieLayer;
-    [SerializeField] private Vector2 mapEdge;
+    [SerializeField] private Vector3 mapEdge;
 
     [SerializeField] private Sprite visualChange1, visualChange2;
     [SerializeField] private int row;
@@ -30,6 +30,7 @@ public class PlantBehaviours : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         isActive = false;
         this.GetComponent<Collider2D>().enabled = false;
         plantRenderer = GetComponent<Renderer>();
@@ -45,6 +46,7 @@ public class PlantBehaviours : MonoBehaviour
     {
         isDead = false;
         isActive = true;
+        
         this.GetComponent<Collider2D>().enabled = true;
         switch (plantType)
         {
@@ -84,12 +86,16 @@ public class PlantBehaviours : MonoBehaviour
         }
     }
 
+    
+
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        hit = Physics2D.Raycast(transform.position, mapEdge,mapEdge.x - transform.position.x, zombieLayer);
-        Debug.DrawRay(transform.position, mapEdge, Color.red, 0.1f);
+        if (plantType == PlantType.chomper)
+            hit = Physics2D.Raycast(transform.position, mapEdge,2.5f, zombieLayer);
+        else
+            hit = Physics2D.Raycast(transform.position, mapEdge, mapEdge.x - transform.position.x, zombieLayer);
+        
         if (hit.collider != null)
         {
             if (canAttack)
@@ -263,7 +269,7 @@ public class PlantBehaviours : MonoBehaviour
         if (other.GetZombieType() != ZombieType.Pole)
         {
             other.Die();
-            Destroy(this.gameObject);
+            Die();
         }
     }
 

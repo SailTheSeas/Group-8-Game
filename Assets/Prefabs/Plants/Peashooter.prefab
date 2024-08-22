@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8528348809792021885
 Transform:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   zombieLayer:
     serializedVersion: 2
     m_Bits: 128
-  mapEdge: {x: 12.5, y: 0}
+  mapEdge: {x: 8, y: 0, z: 0}
   visualChange1: {fileID: 0}
   visualChange2: {fileID: 0}
   row: 0
