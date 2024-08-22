@@ -89,7 +89,7 @@ public class PlantBehaviours : MonoBehaviour
     {
 
         hit = Physics2D.Raycast(transform.position, mapEdge,mapEdge.x - transform.position.x, zombieLayer);
-
+        Debug.DrawRay(transform.position, mapEdge, Color.red, 0.1f);
         if (hit.collider != null)
         {
             if (canAttack)
@@ -104,6 +104,9 @@ public class PlantBehaviours : MonoBehaviour
                         break;
                     case PlantType.snowpea:
                         ShootPea();
+                        break;
+                    case PlantType.chomper:
+                        Chomp(hit.transform.GetComponent<ZombieBehaviours>());
                         break;
                     default:
                         break;
@@ -272,10 +275,10 @@ public class PlantBehaviours : MonoBehaviour
                 if (canAttack)
                     Boom(zombie);
                 break;
-            case PlantType.chomper:
+            /*case PlantType.chomper:
                 if (canAttack)
                     Chomp(zombie);
-                break;
+                break;*/
             default:
                 break;
         }

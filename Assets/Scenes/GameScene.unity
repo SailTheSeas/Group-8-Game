@@ -3272,11 +3272,11 @@ MonoBehaviour:
   waveDelay: 5
   levelDelay: 10
   spawnPositions:
-  - {x: 5, y: -3.43, z: 0}
-  - {x: 5, y: -1.8, z: 0}
-  - {x: 5, y: -0.17, z: 0}
-  - {x: 5, y: 1.46, z: 0}
-  - {x: 5, y: 3.09, z: 0}
+  - {x: 8.5, y: -3.43, z: 0}
+  - {x: 8.5, y: -1.8, z: 0}
+  - {x: 8.5, y: -0.17, z: 0}
+  - {x: 8.5, y: 1.46, z: 0}
+  - {x: 8.5, y: 3.09, z: 0}
   numOfLevels: 1
 --- !u!1 &1657453553
 GameObject:

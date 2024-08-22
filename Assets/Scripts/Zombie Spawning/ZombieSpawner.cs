@@ -57,7 +57,9 @@ public class ZombieSpawner : MonoBehaviour
     private void SpawnZombie(GameObject zombieToSpawn)
     {
         int row = Random.Range(0, 4);
-        GameObject zombie = Instantiate(zombieToSpawn, spawnPositions[row], Quaternion.identity);
+        float offset = Random.Range(0, 4);
+        Vector3 offsetV = new Vector3(offset, 0, 0);
+        GameObject zombie = Instantiate(zombieToSpawn, spawnPositions[row] + offsetV, Quaternion.identity);
         zombie.GetComponent<ZombieBehaviours>().SetRow(row);
         zombie.GetComponent<ZombieBehaviours>().SetZombieSpawner(this.GetComponent<ZombieSpawner>());
     }
