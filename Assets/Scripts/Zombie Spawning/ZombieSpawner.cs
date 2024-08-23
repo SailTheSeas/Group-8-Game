@@ -13,7 +13,8 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private int numOfLevels;
     [SerializeField] private GameObject flagAnnouncment;
     [SerializeField] private UIController slider;
-    private int zombieCount, levelCount, difficulty;
+    [SerializeField] private int levelCount;
+    private int zombieCount , difficulty;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +54,12 @@ public class ZombieSpawner : MonoBehaviour
             }
         }
         if (levels[levelCount].IsFlagWave(0) == false)
+        {
             if (levels[levelCount].IsFlagWave(1) == false)
-            StartCoroutine(WaveDelayFirst());
+            {
+                StartCoroutine(WaveDelayFirst());
+            }
+        }
     }
 
     private void SpawnZombie(GameObject zombieToSpawn)

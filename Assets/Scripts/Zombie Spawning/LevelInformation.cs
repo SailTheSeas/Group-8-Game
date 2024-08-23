@@ -50,7 +50,7 @@ public class LevelInformation : ScriptableObject
 
     public bool IsFlagWave(int waveToCheck)
     {
-        FlagLevel = true;
+        
         return waves[currentWave + waveToCheck].isFlag;
     }
 

@@ -103,7 +103,7 @@ MonoBehaviour:
   zombieName: Pole Vaulting Zombie
   zombieHealth: 335
   zombieSpeed: 0.06
-  zombieDamage: 3.8
+  zombieDamage: 2.5
   zombieType: 4
   accessoryHealth: 0
   jumpSpeed: 2.5

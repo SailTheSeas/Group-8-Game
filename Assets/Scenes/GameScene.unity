@@ -6029,9 +6029,10 @@ MonoBehaviour:
   - {x: 8.5, y: -0.17, z: 0}
   - {x: 8.5, y: 1.46, z: 0}
   - {x: 8.5, y: 3.09, z: 0}
-  numOfLevels: 1
+  numOfLevels: 9
   flagAnnouncment: {fileID: 114683908}
   slider: {fileID: 1557970025}
+  levelCount: 0
 --- !u!114 &1647659888
 MonoBehaviour:
   m_ObjectHideFlags: 0

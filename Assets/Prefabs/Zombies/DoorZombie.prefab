@@ -187,7 +187,7 @@ MonoBehaviour:
   zombieName: Screen Door Zombie
   zombieHealth: 181
   zombieSpeed: 0.003
-  zombieDamage: 3.8
+  zombieDamage: 2.5
   zombieType: 3
   accessoryHealth: 1100
   jumpSpeed: 0

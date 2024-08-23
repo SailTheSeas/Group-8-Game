@@ -102,7 +102,7 @@ MonoBehaviour:
   zombieName: Zombie
   zombieHealth: 181
   zombieSpeed: 0.003
-  zombieDamage: 3.8
+  zombieDamage: 2.5
   zombieType: 0
   accessoryHealth: 0
   jumpSpeed: 0
