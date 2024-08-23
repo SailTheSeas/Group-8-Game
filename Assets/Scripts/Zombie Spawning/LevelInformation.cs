@@ -17,6 +17,7 @@ public class LevelInformation : ScriptableObject
     {
         //WaveSlider = GameObject.Find("WaveSlider").GetComponent<Slider>();
         WaveSlider = FindObjectOfType<Slider>();
+        Reset();
     }
     public void Reset()
     {

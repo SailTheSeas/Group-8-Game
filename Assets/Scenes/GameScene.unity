@@ -6045,7 +6045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1533870273}
-  menuScene: MenuScene
+  menuScene: MainScene
   gameScene: GameScene
 --- !u!1 &1657453553
 GameObject:

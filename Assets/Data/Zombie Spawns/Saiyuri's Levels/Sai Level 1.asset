@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 72a964d01518e244a9821dc35cb39d9f, type: 2}
   - {fileID: 11400000, guid: ce1780bbaeb8e864d9ac79bbb8a20c26, type: 2}
   WaveSlider: {fileID: 0}
-  currentWave: 1
+  currentWave: 0
   FlagLevel: 1
