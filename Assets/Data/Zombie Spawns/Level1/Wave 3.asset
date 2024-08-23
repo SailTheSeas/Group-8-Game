@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave 3
   m_EditorClassIdentifier: 
   totalNumOfZombies: 3
-  numOfZombieVariations: 2
-  numOfTypeOfZombie: 0200000001000000
-  zombiesInWave: 0000000001000000
+  numOfZombieVariations: 1
+  numOfTypeOfZombie: 03000000
+  zombiesInWave: 00000000
   isFlag: 0

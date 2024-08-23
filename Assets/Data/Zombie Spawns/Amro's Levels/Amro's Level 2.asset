@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2706af095f3608a41a488295205eabbf, type: 3}
   m_Name: Amro's Level 2
   m_EditorClassIdentifier: 
-  numOfWaves: 3
+  numOfWaves: 5
   waves:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7089dd36469530d48ba68f8b520f0516, type: 2}
+  - {fileID: 11400000, guid: 3434b5314149a47468f6fd972004ead8, type: 2}
+  - {fileID: 11400000, guid: 0ea3ef1408ad30a49b5b1ffd17ca9c2f, type: 2}
+  - {fileID: 11400000, guid: b5401a4f2d7edff478335ab02757a2c2, type: 2}
+  - {fileID: 11400000, guid: 78f7fd9a156006f4a9462caab841b85e, type: 2}
   WaveSlider: {fileID: 0}
   currentWave: 0
   FlagLevel: 0
