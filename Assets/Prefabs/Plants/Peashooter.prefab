@@ -110,7 +110,7 @@ MonoBehaviour:
   zombieLayer:
     serializedVersion: 2
     m_Bits: 128
-  mapEdge: {x: 8, y: 0, z: 0}
+  mapEdge: {x: 6.5, y: 0, z: 0}
   visualChange1: {fileID: 0}
   visualChange2: {fileID: 0}
   row: 0

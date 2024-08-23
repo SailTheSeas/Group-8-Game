@@ -44,3 +44,6 @@ TagManager:
   - name: Accessory
     uniqueID: 2200876787
     locked: 0
+  - name: Sun
+    uniqueID: 3097937353
+    locked: 0

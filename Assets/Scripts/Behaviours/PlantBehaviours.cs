@@ -176,7 +176,8 @@ public class PlantBehaviours : MonoBehaviour
 
     private void ProduceSun()
     {
-        Instantiate(plantProjectile, this.transform.position, Quaternion.identity);
+        GameObject sun = Instantiate(plantProjectile, this.transform.position, Quaternion.identity);
+        sun.GetComponent<Projectile>().SetRow(row);
         //Debug.Log("Made Sun");
     }
 
